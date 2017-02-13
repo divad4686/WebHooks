@@ -99,7 +99,7 @@ namespace Microsoft.AspNet.WebHooks
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, hook.WebHookUri);
 
             // Fill in request body based on WebHook and work item data
-            JObject body = CreateWebHookRequestBody(workItem);
+            JContainer body = CreateWebHookRequestBody(workItem);
             SignWebHookRequest(workItem, request, body);
 
             // Add extra request or entity headers
@@ -123,7 +123,7 @@ namespace Microsoft.AspNet.WebHooks
         /// </summary>
         /// <param name="workItem">The <see cref="WebHookWorkItem"/> representing the data to be sent.</param>
         /// <returns>An initialized <see cref="JObject"/>.</returns>
-        protected virtual JObject CreateWebHookRequestBody(WebHookWorkItem workItem)
+        protected virtual JContainer CreateWebHookRequestBody(WebHookWorkItem workItem)
         {
             if (workItem == null)
             {
@@ -156,7 +156,7 @@ namespace Microsoft.AspNet.WebHooks
         /// <param name="workItem">The current <see cref="WebHookWorkItem"/>.</param>
         /// <param name="request">The request to add the signature to.</param>
         /// <param name="body">The body to sign and add to the request.</param>
-        protected virtual void SignWebHookRequest(WebHookWorkItem workItem, HttpRequestMessage request, JObject body)
+        protected virtual void SignWebHookRequest(WebHookWorkItem workItem, HttpRequestMessage request, JContainer body)
         {
             if (workItem == null)
             {

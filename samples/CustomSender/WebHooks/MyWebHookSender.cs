@@ -30,7 +30,7 @@ namespace CustomSender.WebHooks
         /// WebHook request follows the default model including the HTTP header containing a signature of the 
         /// body.
         /// </summary>
-        protected override JObject CreateWebHookRequestBody(WebHookWorkItem workItem)
+        protected override JContainer CreateWebHookRequestBody(WebHookWorkItem workItem)
         {
             return base.CreateWebHookRequestBody(workItem);
         }
@@ -39,7 +39,7 @@ namespace CustomSender.WebHooks
         /// By overriding this method you can control just the WebHook header containing a signature of the 
         /// body.
         /// </summary>
-        protected override void SignWebHookRequest(WebHookWorkItem workItem, HttpRequestMessage request, JObject body)
+        protected override void SignWebHookRequest(WebHookWorkItem workItem, HttpRequestMessage request, JContainer body)
         {
             base.SignWebHookRequest(workItem, request, body);
         }
